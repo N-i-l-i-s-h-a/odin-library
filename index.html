@@ -5,15 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel = "stylesheet" href = "styles.css">
+    <script src = "script.js" defer></script>
 </head>
 <body>
     <div class = "main-container">
         <h1>Bookkeeper</h1>
         <div class = "lib-container">
             <div class = "card">
-                <div class = "add-book"><p>+</p></div>
+                <div class = "new-book"><div class = "add-book">+</div></div>
             </div>
         </div>
+        <dialog class = "book-details">
+            <form method = "dialog">
+                <div>    
+                    <label for = "book-title">Title:</label>
+                    <input id = "book-title" type = "text">
+                </div>
+                <div>
+                    <label for = "author">Author:</label>
+                    <input id = "book-title" type = "text">
+                </div>    
+                <div>    
+                    <label for = "status">Status:</label>
+                    <input id = "status" type = "text">
+                </div>    
+                <div>
+                    <button type = "submit">Add Book</button>
+                    <button type = "submit">Close</button>
+                </div>
+            </form>
+        </dialog>
     </div>
 </body>
 </html>

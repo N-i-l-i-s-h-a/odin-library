@@ -3,10 +3,13 @@
     margin: 0;
     padding: 0;
     font-family: 'Anton', sans-serif;
+    box-sizing: border-box;
+    letter-spacing: 1px;
 }
 
 body{
     background-color: #99a8c4;
+    height: 100vh;
 }
 
 h1{
@@ -22,29 +25,31 @@ h1{
     align-items: center;
     flex-direction: column;
     padding: 16px;
+    gap: 32px;
 }
 
 .lib-container{
     display: grid;
-    width: 1080px;
-    height: 400px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(1fr, 500px));
     padding: 16px;
     background-color: #8ba1ca;
     border: 4px outset #7b8eb3;
-    box-shadow: 15px 15px #4b5361;
+    box-shadow: 15px 15px #4b5361ba;
 }
 
 .card{
     width: 200px;
     height: 150px;
+    padding: 16px;
     border: 4px outset #7b8eb3;
-    box-shadow: 15px 15px #4b5361;
+    box-shadow: 5px 5px #4b5361ba;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.add-book{
+.new-book{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,6 +61,57 @@ h1{
     width: 90px;
     height: 90px;
 }
-p{
+.add-book{
     transform: translate(-1%, -8%);
+}
+.add-book:hover, button:hover{
+    cursor: pointer;
+}
+
+dialog{
+    height: auto;
+    width: 20vw;
+    background-color: #99a8c4;
+    align-self: center;
+    justify-self: center;
+    padding: 16px;
+    border: 1px outset #7b8eb3;
+    padding: 20px;
+    border-radius: 8px;
+}
+dialog::backdrop {
+    background-color: rgba(0,0,0,0.5);
+}
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    font-size: 1rem;
+}
+form>div{
+    display: flex;
+    gap: 16px;
+}
+input[type = "text"]{
+    display: flex;
+    width: 100vw;
+    height: 25px;
+    box-sizing: border-box;
+    padding: 5px;
+    border: 1px outset #7b8eb3;
+    border-radius: 5px;
+}
+input:focus{
+    outline: none;
+}
+button{
+    width: 50%;
+    height: 35px;
+    font-size: 1rem;
+    background-color: #ff9d00f2;
+    border: 1px outset #7b8eb3;
+    border-radius: 5px;
+}
+.close-form{
+    justify-self: flex-end;
 }
