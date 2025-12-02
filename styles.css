@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Anton', sans-serif;
+}
+
+body{
+    background-color: #99a8c4;
+}
+
+h1{
+    letter-spacing: 2px;
+    text-shadow: 2px 2px #621a00;
+    font-size: 5rem;
+    color: #ff9d00f2;
+}
+
+.main-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 16px;
+}
+
+.lib-container{
+    display: grid;
+    width: 1080px;
+    height: 400px;
+    padding: 16px;
+    background-color: #8ba1ca;
+    border: 4px outset #7b8eb3;
+    box-shadow: 15px 15px #4b5361;
+}
+
+.card{
+    width: 200px;
+    height: 150px;
+    border: 4px outset #7b8eb3;
+    box-shadow: 15px 15px #4b5361;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-book{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8rem;
+    color: #ff9d00f2;
+    text-shadow: 2px 2px #621a00;
+    background-color: gray;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+}
+p{
+    transform: translate(-1%, -8%);
+}
