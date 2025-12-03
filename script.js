@@ -1,33 +1,37 @@
 const myLibrary = [];
+const modal = document.querySelector(".book-details");
 const display = document.querySelector(".lib-container");
-const card = document.createElement("div");
 const addBookbtn = document.querySelector(".new-book");
+const closebtn = document.querySelector(".close-modal");
+const submitbtn = document.querySelector(".submit-book");
 
 addBookbtn.addEventListener('click', enterDetails);
-card.classList.add("card");
+submitbtn.addEventListener('click', addBookToLibrary);
+closebtn.addEventListener('click', () => modal.close(undefined));
 
-
-function Book() {
+function Book(title, author, readingstatus) {
     if (!new.target) {
         throw Error("You must use the 'new' operator to call the constructor");
     }
-    let name = this.name;
-    let author = this.author;
-    let status = this.status;
+    this.title = title;
+    this.author = author;
+    this.readingstatus = readingstatus;
 }
 
-function addBookToLibrary(name, author, status){
-    const book = new Book(name, author, status);
+function addBookToLibrary(){
+    const title = document.querySelector("#book-title").value;
+    const author = document.querySelector("#author").value;
+    const readingstatus = document.querySelector("#status").value;
+    const book = new Book(title, author, readingstatus);
     myLibrary.push(book);
-    displayBook();
-}
-
-function displayBook(){
-    for(let book in myLibrary){
-        for(const key in book){
-            card.innerText += `${key} : ${book[key]}`;
-        }
+    let card = document.createElement("div");
+    card.classList.add("card");
+    for(const key in book){
+        let info = document.createElement("p");
+        info.innerText += `${key} : ${book[key]}`;
+        card.append(info);
     }
+    display.append(card);
 }
 
 function removeBook(){
@@ -35,6 +39,5 @@ function removeBook(){
 }
 
 function enterDetails(){
-    const modal = document.querySelector(".book-details");
     modal.showModal();
 }

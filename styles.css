@@ -30,8 +30,9 @@ h1{
 
 .lib-container{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(1fr, 500px));
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(auto-fit, 1fr);
+    gap: 16px;
     padding: 16px;
     background-color: #8ba1ca;
     border: 4px outset #7b8eb3;
@@ -45,8 +46,10 @@ h1{
     border: 4px outset #7b8eb3;
     box-shadow: 5px 5px #4b5361ba;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 16px;
 }
 
 .new-book{
