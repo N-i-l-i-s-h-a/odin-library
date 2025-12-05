@@ -52,7 +52,7 @@ h1{
     gap: 16px;
 }
 
-.new-book{
+.add-card{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,6 +69,18 @@ h1{
 }
 .add-book:hover, button:hover{
     cursor: pointer;
+}
+.book{
+    width: 200px;
+    height: 150px;
+    padding: 16px;
+    border: 4px outset #7b8eb3;
+    box-shadow: 5px 5px #4b5361ba;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
 }
 
 dialog{
@@ -114,6 +126,9 @@ button{
     background-color: #ff9d00f2;
     border: 1px outset #7b8eb3;
     border-radius: 5px;
+}
+.del{
+    margin-top: 10px;
 }
 .close-form{
     justify-self: flex-end;
