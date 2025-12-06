@@ -70,10 +70,11 @@ h1{
 .add-book:hover, button:hover{
     cursor: pointer;
 }
+
 .book{
     width: 200px;
     height: 150px;
-    padding: 16px;
+    padding: 8px;
     border: 4px outset #7b8eb3;
     box-shadow: 5px 5px #4b5361ba;
     display: flex;
@@ -107,10 +108,10 @@ form>div{
     display: flex;
     gap: 16px;
 }
-input[type = "text"]{
+input[type = "text"], select{
     display: flex;
     width: 100vw;
-    height: 25px;
+    height: 30px;
     box-sizing: border-box;
     padding: 5px;
     border: 1px outset #7b8eb3;
@@ -127,9 +128,67 @@ button{
     border: 1px outset #7b8eb3;
     border-radius: 5px;
 }
-.del{
+.delete-btn{
+    height: 25px;
+    width: 80px;
+    font-size: smaller;
     margin-top: 10px;
 }
 .close-form{
     justify-self: flex-end;
+}
+
+.switch {
+  position: relative;
+  display: flex;
+  width: 40px;
+  height: 16px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 10px; 
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 0;
+  bottom: 0;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%; 
+}
+
+input:checked + .slider {
+  background-color: #ff9d00f2;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.card-content{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    gap: 10px;
 }

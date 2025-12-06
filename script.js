@@ -12,16 +12,20 @@ function Book(title, author, readingstatus) {
     }
     this.Title = title;
     this.Author = author;
-    this.Status = readingstatus;
+    this.Read = readingstatus;
     this.id = crypto.randomUUID();
 }
+
+Book.prototype.toggleRead = function() {
+  this.Read = !this.Read;
+};
 
 bookForm.addEventListener('submit', function(event) {
   event.preventDefault(); // Prevent default form submission
   const formData = new FormData(bookForm);
   const title = formData.get("book-title");
   const author = formData.get("author");
-  const readingstatus = formData.get("status");
+  const readingstatus = formData.get("status") === "on";
   const book = new Book(title, author, readingstatus);
   myLibrary.push(book);
   addBookToLibrary(book);
@@ -32,7 +36,7 @@ document.addEventListener('click', (event) => {
     const parent = event.target.closest('.book');
     if (parent) {
       parent.remove();
-      const idx = myLibrary.findIndex(book => book.id === event.target.dataset.id);
+      const idx = myLibrary.findIndex(book => book.id === parent.dataset.id);
       myLibrary.splice(idx, 1);
     }
   }
@@ -42,18 +46,69 @@ addBookbtn.addEventListener('click', enterDetails);
 closebtn.addEventListener('click', () => modal.close(undefined));
 
 function addBookToLibrary(book){
+
   let card = document.createElement("div");
   card.classList.add("book");
-  for(const key in book){
-      if(key == 'id')   continue;
-      let info = document.createElement("p");
-      info.innerText += `${key} : ${book[key]}`;
-      card.append(info);
+  card.dataset.id = book.id;
+
+  let statusMark = document.createElement("label");
+  statusMark.classList.add("switch")
+
+  let togglebtn = document.createElement("input");
+  togglebtn.setAttribute("type", "checkbox");
+  togglebtn.classList.add("toggle-mode");
+
+  let slider = document.createElement("span");
+  slider.classList.add("slider");
+  slider.classList.add("round");
+
+  statusMark.appendChild(togglebtn);
+  statusMark.appendChild(slider);
+
+  let toggletext = document.createElement("p");
+
+  if (book.Read) {
+      togglebtn.checked = true;
+      toggletext.innerText = "Read";
+  } 
+  else {
+      togglebtn.checked = false;
+      toggletext.innerText = "Not Read";
   }
+
   let delbtn = document.createElement("button");
   delbtn.innerText = "Remove";
   delbtn.classList.add("delete-btn");
-  delbtn.dataset.id = book.id;
+
+  statusMark.append(togglebtn);
+  statusMark.append(slider);
+
+  togglebtn.addEventListener('change', (event) => {
+
+    const targetBook = myLibrary.find(b => b.id === book.id);
+    
+    if (targetBook) {
+        targetBook.toggleRead(); 
+        toggletext.innerText = targetBook.Read ? "Read" : "Not Read";
+    }
+  });
+
+  const titleDisplay = document.createElement("div");
+  titleDisplay.classList.add("card-content");
+  titleDisplay.textContent = `Title: ${book.Title}`;
+  card.appendChild(titleDisplay);
+
+  const authorDisplay = document.createElement("div");
+  authorDisplay.classList.add("card-content");
+  authorDisplay.textContent = `Author: ${book.Author}`;
+  card.appendChild(authorDisplay);
+
+  const statusContainer = document.createElement("div");
+  statusContainer.classList.add("card-content");
+  statusContainer.appendChild(toggletext);
+  statusContainer.appendChild(statusMark);
+  card.appendChild(statusContainer);
+  
   card.append(delbtn);
   display.append(card);
   modal.close();
