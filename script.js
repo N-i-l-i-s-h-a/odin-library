@@ -28,6 +28,7 @@ bookForm.addEventListener('submit', function(event) {
   const readingstatus = formData.get("status") === "on";
   const book = new Book(title, author, readingstatus);
   myLibrary.push(book);
+  bookForm.reset();
   addBookToLibrary(book);
 });
 
@@ -76,10 +77,6 @@ function addBookToLibrary(book){
       toggletext.innerText = "Not Read";
   }
 
-  let delbtn = document.createElement("button");
-  delbtn.innerText = "Remove";
-  delbtn.classList.add("delete-btn");
-
   statusMark.append(togglebtn);
   statusMark.append(slider);
 
@@ -104,11 +101,16 @@ function addBookToLibrary(book){
   card.appendChild(authorDisplay);
 
   const statusContainer = document.createElement("div");
-  statusContainer.classList.add("card-content");
+  statusContainer.classList.add("switch-content");
   statusContainer.appendChild(toggletext);
   statusContainer.appendChild(statusMark);
   card.appendChild(statusContainer);
   
+  const delbtn = document.createElement("button");
+  delbtn.textContent = "Remove";
+  delbtn.classList.add("delete-btn");
+  card.appendChild(delbtn);
+
   card.append(delbtn);
   display.append(card);
   modal.close();
