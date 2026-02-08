@@ -6,14 +6,13 @@ const closebtn = document.querySelector(".close-modal");
 const submitbtn = document.querySelector(".submit-book");
 const bookForm = document.getElementById("book-entry");
 
-function Book(title, author, readingstatus) {
-    if (!new.target) {
-        throw Error("You must use the 'new' operator to call the constructor");
+class Book {
+    constructor(title, author, readingstatus){
+        this.Title = title;
+        this.Author = author;
+        this.Read = readingstatus;
+        this.id = crypto.randomUUID();
     }
-    this.Title = title;
-    this.Author = author;
-    this.Read = readingstatus;
-    this.id = crypto.randomUUID();
 }
 
 Book.prototype.toggleRead = function() {
